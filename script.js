@@ -1,12 +1,25 @@
 "use strict";
 
+const cart = document.querySelector(".content");
 const dogsContainer = document.querySelector(".container");
 const button = document.querySelector(".btn");
+
+const renderSpinner = function (parentEl) {
+  const markup = `
+        <div class="spinner">
+          <svg>
+            <use href="icons.svg#icon-loader"></use>
+          </svg>
+        </div>
+  `;
+  parentEl.innerHTML = "";
+  parentEl.insertAdjacentHTML("afterbegin", markup);
+};
 
 const renderDog = function (src) {
   const html = `
             <div class="content">
-                <img class="image" src="${src}" />
+                <img class="image" src="${src}" alt="dog" />
             </div>
             `;
 
@@ -20,9 +33,13 @@ const renderDog = function (src) {
 // };
 
 const loadMoreDogs = async function () {
-  const res = await fetch("https://dog.ceo/api/breeds/image/random");
-  const data = await res.json();
-  renderDog(data.message);
+  try {
+    const res = await fetch("https://dog.ceo/api/breeds/image/random");
+    const data = await res.json();
+    renderDog(data.message);
+  } catch (err) {
+    alert(err);
+  }
 };
 
 button.addEventListener("click", loadMoreDogs);
