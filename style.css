@@ -20,6 +20,7 @@ body {
 }
 
 .content {
+  position: relative;
   width: 300px;
   height: 300px;
   margin-bottom: 50px;
@@ -44,14 +45,18 @@ body {
   font-size: 20px;
   background-color: transparent;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 99px;
   color: white;
   background-color: rgb(20, 19, 19);
 }
 
 .spinner {
-  margin: 5rem auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  z-index: -1;
 }
 .spinner svg {
   height: 6rem;
@@ -67,4 +72,8 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.hidden {
+  display: none;
 }

@@ -1,10 +1,11 @@
 "use strict";
 
-const cart = document.querySelector(".content");
+const carts = document.getElementsByClassName("content");
+const loading = document.getElementsByClassName("spinner");
 const dogsContainer = document.querySelector(".container");
 const button = document.querySelector(".btn");
 
-const renderSpinner = function (parentEl) {
+const renderDog = function (src) {
   const markup = `
         <div class="spinner">
           <svg>
@@ -12,18 +13,18 @@ const renderSpinner = function (parentEl) {
           </svg>
         </div>
   `;
-  parentEl.innerHTML = "";
-  parentEl.insertAdjacentHTML("afterbegin", markup);
-};
 
-const renderDog = function (src) {
   const html = `
             <div class="content">
+            ${markup}
                 <img class="image" src="${src}" alt="dog" />
             </div>
             `;
 
   dogsContainer.insertAdjacentHTML("beforeend", html);
+  for (let el of [...loading]) {
+    setTimeout(() => el.remove(), 2000);
+  }
 };
 
 // const loadMoreDogs = function () {
