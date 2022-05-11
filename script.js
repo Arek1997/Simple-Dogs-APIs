@@ -1,30 +1,18 @@
 "use strict";
 
 const carts = document.getElementsByClassName("content");
-const loading = document.getElementsByClassName("spinner");
+const loading = document.querySelector(".lds-dual-ring");
 const dogsContainer = document.querySelector(".container");
 const button = document.querySelector(".btn");
 
 const renderDog = function (src) {
-  const markup = `
-        <div class="spinner">
-          <svg>
-            <use href="icons.svg#icon-loader"></use>
-          </svg>
-        </div>
-  `;
-
   const html = `
             <div class="content">
-            ${markup}
-                <img class="image" src="${src}" alt="dog" />
+               <img class="image" src="${src}" alt="dog" />
             </div>
             `;
 
   dogsContainer.insertAdjacentHTML("beforeend", html);
-  for (let el of [...loading]) {
-    setTimeout(() => el.remove(), 2000);
-  }
 };
 
 // const loadMoreDogs = function () {
@@ -35,9 +23,15 @@ const renderDog = function (src) {
 
 const loadMoreDogs = async function () {
   try {
+    loading.classList.remove("hidden");
+    button.classList.add("hidden");
+
     const res = await fetch("https://dog.ceo/api/breeds/image/random");
     const data = await res.json();
     renderDog(data.message);
+
+    loading.classList.add("hidden");
+    button.classList.remove("hidden");
   } catch (err) {
     alert(err);
   }
