@@ -21,17 +21,20 @@ const renderDog = function (src) {
 //     .then((data) => renderDog(data.message));
 // };
 
+const showHide = function (...elements) {
+  console.log(elements);
+  elements.forEach((el) => el.classList.toggle("hidden"));
+};
+
 const loadMoreDogs = async function () {
   try {
-    loading.classList.remove("hidden");
-    button.classList.add("hidden");
+    showHide(loading, button);
 
     const res = await fetch("https://dog.ceo/api/breeds/image/random");
     const data = await res.json();
     renderDog(data.message);
 
-    loading.classList.add("hidden");
-    button.classList.remove("hidden");
+    showHide(loading, button);
   } catch (err) {
     alert(err);
   }
