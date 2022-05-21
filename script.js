@@ -77,13 +77,7 @@ const loadMorePets = async function () {
 
     if (select === "dogAPI") {
       initialAPI = dogAPI;
-
       getAnimal(initialAPI, "message");
-
-      // const res = await fetch(initialAPI);
-      // const data = await res.json();
-      // renderPet(data.message);
-      // console.log(data["message"]);
 
       showHide(loading, buttonLoader);
 
@@ -94,13 +88,7 @@ const loadMorePets = async function () {
 
     if (select === "catAPI") {
       initialAPI = catAPI;
-
       getAnimal(initialAPI, "url", catImage);
-
-      // const res = await fetch(initialAPI);
-      // const data = await res.json();
-      // // console.log(data.url);
-      // renderPet(catImage + data.url);
 
       showHide(loading, buttonLoader);
 
