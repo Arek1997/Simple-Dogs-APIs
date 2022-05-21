@@ -9,13 +9,21 @@
     <script defer src="script.js"></script>
   </head>
   <body>
+    <div class="choose-animal">
+      <button data-animal="dog" data-src="dog1.jpg" class="btn-animal btn-dog">
+        🐶
+      </button>
+      <button data-animal="cat" data-src="cat1.jpg" class="btn-animal btn-cat">
+        🐱
+      </button>
+    </div>
     <div class="container">
       <div class="content">
         <img class="image" src="dog1.jpg" alt="dog" />
       </div>
     </div>
     <div class="button-loader">
-      <button class="btn">Load more Dogs!</button>
+      <button class="btn btn--load">Load more Dogs!</button>
       <div class="lds-dual-ring hidden"></div>
     </div>
     <audio id="dog" src="./sounds/dog.mp3"></audio>

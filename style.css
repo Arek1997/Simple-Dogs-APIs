@@ -9,6 +9,29 @@ body {
   );
 }
 
+.choose-animal {
+  padding: 20px;
+}
+
+.btn-animal {
+  padding: 10px 30px;
+  font-size: 25px;
+  cursor: pointer;
+  border-radius: 10px;
+  border-style: none;
+  background-color: hsl(180, 24%, 88%);
+  transition: 0.5s ease-in-out;
+}
+
+.btn-animal:hover {
+  transform: scale(1.1);
+  background-color: hsl(180, 24%, 78%);
+}
+
+.btn-dog {
+  margin-right: 30px;
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -29,7 +52,7 @@ body {
 }
 
 .content:hover {
-  transform: scale(1.15);
+  transform: scale(1.08);
 }
 
 .image {
@@ -41,9 +64,8 @@ body {
 }
 
 .btn {
-  padding: 10px 20px;
-  font-size: 20px;
-  background-color: transparent;
+  padding: 13px 25px;
+  font-size: 25px;
   cursor: pointer;
   border-radius: 99px;
   color: white;
