@@ -4,6 +4,7 @@ const carts = document.getElementsByClassName("content");
 const loading = document.querySelector(".lds-dual-ring");
 const dogsContainer = document.querySelector(".container");
 const button = document.querySelector(".btn");
+const dog = document.querySelector("#dog");
 
 const renderDog = function (src) {
   const html = `
@@ -35,6 +36,10 @@ const loadMoreDogs = async function () {
     renderDog(data.message);
 
     showHide(loading, button);
+
+    // dog barking
+    dog.currentTime = 0;
+    dog.play();
   } catch (err) {
     alert(err);
   }
