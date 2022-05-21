@@ -25,11 +25,14 @@ body {
 
 .btn-animal:hover {
   transform: scale(1.1);
-  background-color: hsl(180, 24%, 78%);
 }
 
 .btn-dog {
   margin-right: 30px;
+}
+
+.active {
+  background-color: hsl(180, 100%, 80%);
 }
 
 .container {
@@ -43,7 +46,7 @@ body {
 }
 
 .content {
-  position: relative;
+  /* position: relative; */
   width: 300px;
   height: 300px;
   margin-bottom: 50px;

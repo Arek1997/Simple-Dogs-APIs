@@ -3,9 +3,8 @@
 const initialImage = document.querySelector(".image");
 const loading = document.querySelector(".lds-dual-ring");
 const dogsContainer = document.querySelector(".container");
-const button = document.querySelector(".btn--load");
+const buttonLoader = document.querySelector(".btn--load");
 const dogBark = document.querySelector("#dog");
-
 const dogAndCatButtons = document.querySelectorAll(".btn-animal");
 
 // API
@@ -16,8 +15,24 @@ const catImage = "https://cataas.com";
 // Functions
 
 const changeImage = function (e) {
+  // Change initial image
   const sorce = e.target.dataset.src;
   initialImage.src = sorce;
+
+  // Add/remove active class from animal button
+  dogAndCatButtons.forEach((btn) => {
+    btn.classList.remove("active");
+  });
+
+  if (!e.target.classList.contains("active"))
+    e.target.classList.toggle("active");
+
+  // Change Load More button content
+  if (initialImage.src.includes("dog"))
+    buttonLoader.textContent = "Load more Dogs!";
+
+  if (initialImage.src.includes("cat"))
+    buttonLoader.textContent = "Load more Cats!";
 };
 
 const renderDog = function (src) {
@@ -37,13 +52,13 @@ const showHide = function (...elements) {
 
 const loadMoreDogs = async function () {
   try {
-    showHide(loading, button);
+    showHide(loading, buttonLoader);
 
     const res = await fetch(dogAPI);
     const data = await res.json();
     renderDog(data.message);
 
-    showHide(loading, button);
+    showHide(loading, buttonLoader);
 
     // dog barking
     dogBark.currentTime = 0;
@@ -53,7 +68,9 @@ const loadMoreDogs = async function () {
   }
 };
 
-button.addEventListener("click", loadMoreDogs);
+// Listeners
+
+buttonLoader.addEventListener("click", loadMoreDogs);
 
 dogAndCatButtons.forEach((button) => {
   button.addEventListener("click", changeImage);
