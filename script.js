@@ -7,15 +7,22 @@ const initialImage = document.querySelector(".image");
 const loading = document.querySelector(".lds-dual-ring");
 const buttonLoader = document.querySelector(".btn--load");
 const dogBark = document.querySelector("#dog");
+const catMiau = document.querySelector("#cat");
+let select = "dogAPI";
 
 // API
+
 const dogAPI = "https://dog.ceo/api/breeds/image/random";
 const catAPI = "https://cataas.com/cat?json=true";
+let initialAPI = dogAPI;
 const catImage = "https://cataas.com";
 
 // Functions
 
 const changeImage = function (e) {
+  // set select variable
+  select = e.target.dataset.animal + "API";
+
   // Change initial image
   const sorce = e.target.dataset.src;
   initialImage.src = sorce;
@@ -42,7 +49,7 @@ const removeCards = function () {
   });
 };
 
-const renderDog = function (src) {
+const renderPet = function (src) {
   const html = `
             <div class="content">
                <img class="image" src="${src}" alt="dog" />
@@ -53,23 +60,41 @@ const renderDog = function (src) {
 };
 
 const showHide = function (...elements) {
-  console.log(elements);
   elements.forEach((el) => el.classList.toggle("hidden"));
 };
 
-const loadMoreDogs = async function () {
+const loadMorePets = async function () {
   try {
     showHide(loading, buttonLoader);
 
-    const res = await fetch(dogAPI);
-    const data = await res.json();
-    renderDog(data.message);
+    if (select === "dogAPI") {
+      initialAPI = dogAPI;
 
-    showHide(loading, buttonLoader);
+      const res = await fetch(initialAPI);
+      const data = await res.json();
+      renderPet(data.message);
 
-    // dog barking
-    dogBark.currentTime = 0;
-    dogBark.play();
+      showHide(loading, buttonLoader);
+
+      // dog barking
+      dogBark.currentTime = 0;
+      dogBark.play();
+    }
+
+    if (select === "catAPI") {
+      initialAPI = catAPI;
+
+      const res = await fetch(catAPI);
+      const data = await res.json();
+      // console.log(data.url);
+      renderPet(catImage + data.url);
+
+      showHide(loading, buttonLoader);
+
+      // cat miau
+      catMiau.currentTime = 0;
+      catMiau.play();
+    }
   } catch (err) {
     alert(err);
   }
@@ -77,12 +102,13 @@ const loadMoreDogs = async function () {
 
 // Listeners
 
-buttonLoader.addEventListener("click", loadMoreDogs);
+buttonLoader.addEventListener("click", loadMorePets);
 
 dogAndCatButtons.forEach((button) => {
   button.addEventListener("click", changeImage);
   button.addEventListener("click", removeCards);
 });
+
 // const loadCat = (async function () {
 //   try {
 //     const res = await fetch(catAPI);
