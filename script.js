@@ -1,5 +1,6 @@
 "use strict";
 
+// variables
 const dogAndCatButtons = document.querySelectorAll(".btn-animal");
 const dogsContainer = document.querySelector(".container");
 const animalCard = document.getElementsByClassName("content");
@@ -23,9 +24,10 @@ const changeImage = function (e) {
   // set select variable
   select = e.target.dataset.animal + "API";
 
-  // Change initial image
+  // Change initial image and alt attribute
   const sorce = e.target.dataset.src;
   initialImage.src = sorce;
+  initialImage.alt = select.slice(0, 3);
 
   // Add/remove active class from animal button
   dogAndCatButtons.forEach((btn) => {
@@ -52,7 +54,7 @@ const removeCards = function () {
 const renderPet = function (src) {
   const html = `
             <div class="content">
-               <img class="image" src="${src}" alt="dog" />
+               <img class="image" src="${src}" alt="${select.slice(0, 3)}" />
             </div>
             `;
 
