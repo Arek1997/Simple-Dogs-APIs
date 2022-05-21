@@ -1,11 +1,12 @@
 "use strict";
 
+const dogAndCatButtons = document.querySelectorAll(".btn-animal");
+const dogsContainer = document.querySelector(".container");
+const animalCard = document.getElementsByClassName("content");
 const initialImage = document.querySelector(".image");
 const loading = document.querySelector(".lds-dual-ring");
-const dogsContainer = document.querySelector(".container");
 const buttonLoader = document.querySelector(".btn--load");
 const dogBark = document.querySelector("#dog");
-const dogAndCatButtons = document.querySelectorAll(".btn-animal");
 
 // API
 const dogAPI = "https://dog.ceo/api/breeds/image/random";
@@ -33,6 +34,12 @@ const changeImage = function (e) {
 
   if (initialImage.src.includes("cat"))
     buttonLoader.textContent = "Load more Cats!";
+};
+
+const removeCards = function () {
+  [...animalCard].forEach((card) => {
+    if (!card.hasAttribute("data-init")) card.remove();
+  });
 };
 
 const renderDog = function (src) {
@@ -74,6 +81,7 @@ buttonLoader.addEventListener("click", loadMoreDogs);
 
 dogAndCatButtons.forEach((button) => {
   button.addEventListener("click", changeImage);
+  button.addEventListener("click", removeCards);
 });
 // const loadCat = (async function () {
 //   try {
