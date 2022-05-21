@@ -65,6 +65,12 @@ const showHide = function (...elements) {
   elements.forEach((el) => el.classList.toggle("hidden"));
 };
 
+const getAnimal = async function (x, y, z = "") {
+  const res = await fetch(x);
+  const data = await res.json();
+  renderPet(z + data[y]);
+};
+
 const loadMorePets = async function () {
   try {
     showHide(loading, buttonLoader);
@@ -72,9 +78,12 @@ const loadMorePets = async function () {
     if (select === "dogAPI") {
       initialAPI = dogAPI;
 
-      const res = await fetch(initialAPI);
-      const data = await res.json();
-      renderPet(data.message);
+      getAnimal(initialAPI, "message");
+
+      // const res = await fetch(initialAPI);
+      // const data = await res.json();
+      // renderPet(data.message);
+      // console.log(data["message"]);
 
       showHide(loading, buttonLoader);
 
@@ -86,10 +95,12 @@ const loadMorePets = async function () {
     if (select === "catAPI") {
       initialAPI = catAPI;
 
-      const res = await fetch(initialAPI);
-      const data = await res.json();
-      // console.log(data.url);
-      renderPet(catImage + data.url);
+      getAnimal(initialAPI, "url", catImage);
+
+      // const res = await fetch(initialAPI);
+      // const data = await res.json();
+      // // console.log(data.url);
+      // renderPet(catImage + data.url);
 
       showHide(loading, buttonLoader);
 
@@ -117,6 +128,7 @@ dogAndCatButtons.forEach((button) => {
 //     const res = await fetch(catAPI);
 //     const data = await res.json();
 //     console.log(data.url);
+//     console.log(data["url"]);
 //   } catch (err) {
 //     console.log(err);
 //   }
