@@ -86,7 +86,7 @@ const loadMorePets = async function () {
     if (select === "catAPI") {
       initialAPI = catAPI;
 
-      const res = await fetch(catAPI);
+      const res = await fetch(initialAPI);
       const data = await res.json();
       // console.log(data.url);
       renderPet(catImage + data.url);
