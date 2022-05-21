@@ -65,10 +65,10 @@ const showHide = function (...elements) {
   elements.forEach((el) => el.classList.toggle("hidden"));
 };
 
-const getAnimal = async function (x, y, z = "") {
-  const res = await fetch(x);
+const getAnimal = async function (url, imageSource, optional = "") {
+  const res = await fetch(url);
   const data = await res.json();
-  renderPet(z + data[y]);
+  renderPet(optional + data[imageSource]);
 };
 
 const loadMorePets = async function () {
