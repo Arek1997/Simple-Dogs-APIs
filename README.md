@@ -1,5 +1,5 @@
 # Simple-Pets-APIs
-As the title says, it's simple Pets API.
+Pets API. You can select Dog or Cat and have fun with fun pets images.
 
 LIVE: https://arek1997.github.io/Simple-Dogs-APIs/ 
 
