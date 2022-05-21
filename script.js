@@ -29,7 +29,7 @@ const changeImage = function (e) {
   initialImage.src = sorce;
   initialImage.alt = select.slice(0, 3);
 
-  // Add/remove active class from animal button
+  // Add/remove active class to animal button
   dogAndCatButtons.forEach((btn) => {
     btn.classList.remove("active");
   });
@@ -111,6 +111,7 @@ dogAndCatButtons.forEach((button) => {
   button.addEventListener("click", removeCards);
 });
 
+// Testing cats API
 // const loadCat = (async function () {
 //   try {
 //     const res = await fetch(catAPI);
