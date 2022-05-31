@@ -15,6 +15,8 @@ const popup_image = document.querySelector(".popup__img");
 const popup_close = document.querySelector(".popup__close");
 const popupLeftArrow = document.querySelector(".popup__arrow--left");
 const popupRightArrow = document.querySelector(".popup__arrow--right");
+const imageNumber = document.querySelector(".img-number");
+const imagesArrLength = document.querySelector(".arr-length");
 
 let currentImageIndex;
 let select = "dogAPI";
@@ -117,6 +119,8 @@ const openPopup = function (e) {
 
     const index = [...allPetsImages].findIndex((el) => el.src === e.target.src);
     currentImageIndex = index;
+    imageNumber.textContent = currentImageIndex + 1;
+    imagesArrLength.textContent = allPetsImages.length;
   }
 };
 
@@ -134,6 +138,7 @@ const nextImage = function () {
   } else {
     currentImageIndex++;
   }
+  imageNumber.textContent = currentImageIndex + 1;
   popup_image.src = allPetsImages[currentImageIndex].src;
 };
 
@@ -143,6 +148,7 @@ const prevImage = function () {
   } else {
     currentImageIndex--;
   }
+  imageNumber.textContent = currentImageIndex + 1;
   popup_image.src = allPetsImages[currentImageIndex].src;
 };
 
