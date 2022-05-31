@@ -5,10 +5,18 @@ const dogAndCatButtons = document.querySelectorAll(".btn-animal");
 const dogsContainer = document.querySelector(".container");
 const animalCard = document.getElementsByClassName("content");
 const initialImage = document.querySelector(".image");
+const allPetsImages = document.getElementsByClassName("image");
 const loading = document.querySelector(".lds-dual-ring");
 const buttonLoader = document.querySelector(".btn--load");
 const dogBark = document.querySelector("#dog");
 const catMiau = document.querySelector("#cat");
+const popup = document.querySelector(".popup");
+const popup_image = document.querySelector(".popup__img");
+const popup_close = document.querySelector(".popup__close");
+const popupLeftArrow = document.querySelector(".popup__arrow--left");
+const popupRightArrow = document.querySelector(".popup__arrow--right");
+
+let currentImageIndex;
 let select = "dogAPI";
 
 // API
@@ -101,6 +109,39 @@ const loadMorePets = async function () {
   }
 };
 
+const openPopup = function (e) {
+  if (e.target.classList.contains("image")) {
+    popup.classList.remove("hidden");
+    popup_image.src = e.target.src;
+    popup_image.alt = e.target.alt;
+
+    const index = [...allPetsImages].findIndex((el) => el.src === e.target.src);
+    currentImageIndex = index;
+  }
+};
+
+const closePopup = function () {
+  popup.classList.add("hidden");
+};
+
+const nextImage = function () {
+  if (currentImageIndex === allPetsImages.length - 1) {
+    currentImageIndex = 0;
+  } else {
+    currentImageIndex++;
+  }
+  popup_image.src = allPetsImages[currentImageIndex].src;
+};
+
+const prevImage = function () {
+  if (currentImageIndex === 0) {
+    currentImageIndex = allPetsImages.length - 1;
+  } else {
+    currentImageIndex--;
+  }
+  popup_image.src = allPetsImages[currentImageIndex].src;
+};
+
 // Listeners
 
 buttonLoader.addEventListener("click", loadMorePets);
@@ -110,6 +151,10 @@ dogAndCatButtons.forEach((button) => {
   button.addEventListener("click", removeCards);
 });
 
+dogsContainer.addEventListener("click", openPopup);
+popup_close.addEventListener("click", closePopup);
+popupRightArrow.addEventListener("click", nextImage);
+popupLeftArrow.addEventListener("click", prevImage);
 // Testing cats API
 // const loadCat = (async function () {
 //   try {
