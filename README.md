@@ -8,6 +8,3 @@ Dogs: https://dog.ceo/dog-api/ \
 Cats: https://cataas.com/#/ 
 
 
-TODO:
-
-- Implement slider (LightBox clone)
