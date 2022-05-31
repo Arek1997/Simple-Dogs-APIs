@@ -121,7 +121,11 @@ const openPopup = function (e) {
 };
 
 const closePopup = function () {
-  popup.classList.add("hidden");
+  popup.classList.add("fade-out");
+  setTimeout(() => {
+    popup.classList.remove("fade-out");
+    popup.classList.add("hidden");
+  }, 500);
 };
 
 const nextImage = function () {
@@ -155,6 +159,17 @@ dogsContainer.addEventListener("click", openPopup);
 popup_close.addEventListener("click", closePopup);
 popupRightArrow.addEventListener("click", nextImage);
 popupLeftArrow.addEventListener("click", prevImage);
+popup.addEventListener("click", function (e) {
+  if (e.target === popup) closePopup();
+});
+
+document.addEventListener("keydown", function (e) {
+  if (popup.classList.contains("hidden")) return;
+
+  if (e.code === "ArrowRight" || e.keyCode === 39) nextImage();
+  if (e.code === "ArrowLeft" || e.keyCode === 37) prevImage();
+  if (e.code === "Escape" || e.keyCode === 27) closePopup();
+});
 // Testing cats API
 // const loadCat = (async function () {
 //   try {
