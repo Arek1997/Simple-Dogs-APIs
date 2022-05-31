@@ -129,3 +129,65 @@ body {
 .hidden {
   display: none;
 }
+
+.popup {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.popup__img {
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
+}
+
+.popup > button {
+  position: fixed;
+  font-size: 100px;
+  border-style: none;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.popup__close {
+  top: 30px;
+  right: 60px;
+  background-color: transparent;
+  color: white;
+  transition: opacity 0.5s;
+}
+
+.popup__close:hover,
+.popup__arrow:hover {
+  opacity: 1;
+}
+
+.popup__arrow {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  transition: opacity 0.5s;
+}
+
+.popup__arrow--left {
+  top: 50%;
+  left: 5%;
+}
+
+.popup__arrow--right {
+  top: 50%;
+  right: 5%;
+}
+
+.popup.hidden {
+  display: none;
+}
