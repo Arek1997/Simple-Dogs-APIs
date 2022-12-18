@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dogs API</title>
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
-  </head>
-  <body>
-    <div class="choose-animal">
-      <button
-        data-animal="dog"
-        data-src="dog1.jpg"
-        class="btn-animal btn-dog active"
-      >
-        🐶
-      </button>
-      <button data-animal="cat" data-src="cat1.jpg" class="btn-animal btn-cat">
-        🐱
-      </button>
-    </div>
-    <div class="container">
-      <div data-init class="content">
-        <img class="image" src="dog1.jpg" alt="dog" />
-      </div>
-    </div>
-    <div class="button-loader">
-      <button class="btn btn--load">Load more Dogs!</button>
-      <div class="lds-dual-ring hidden"></div>
-    </div>
-    <div class="popup hidden">
-      <button class="popup__close">X</button>
-      <img src="" alt="" class="popup__img" />
-      <button class="popup__arrow popup__arrow--left"><</button>
-      <button class="popup__arrow popup__arrow--right">></button>
-      <p class="img-description">
-        Photo <span class="img-number"></span> of
-        <span class="arr-length"></span>
-      </p>
-    </div>
-    <audio id="dog" src="./sounds/dog.mp3"></audio>
-    <audio id="cat" src="./sounds/cat.mp3"></audio>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Dogs API</title>
+		<link rel="stylesheet" href="./src/style/style.css" />
+		<script defer src="./dist/script/script.js"></script>
+	</head>
+	<body>
+		<div class="choose-animal">
+			<button
+				data-animal="dog"
+				data-src="./src/image/dog1.jpg"
+				class="btn-animal btn-dog active"
+			>
+				🐶
+			</button>
+			<button
+				data-animal="cat"
+				data-src="./src/image/cat1.jpg"
+				class="btn-animal btn-cat"
+			>
+				🐱
+			</button>
+		</div>
+		<div class="container">
+			<article data-init class="content">
+				<img class="image" src="./src/image/dog1.jpg" alt="dog" />
+			</article>
+		</div>
+		<div class="button-loader">
+			<button class="btn btn--load">Load more Dogs!</button>
+			<div class="lds-dual-ring hidden"></div>
+		</div>
+		<div class="popup hidden">
+			<button class="popup__close">X</button>
+			<img src="" alt="" class="popup__img" />
+			<button class="popup__arrow popup__arrow--prev"><</button>
+			<button class="popup__arrow popup__arrow--next">></button>
+			<p class="img-description">
+				Photo <span class="img-number"></span> of
+				<span class="arr-length"></span>
+			</p>
+		</div>
+		<audio id="dog" src="./src/sounds/dog.mp3"></audio>
+		<audio id="cat" src="./src/sounds/cat.mp3"></audio>
+	</body>
 </html>
