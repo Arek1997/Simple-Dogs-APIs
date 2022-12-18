@@ -8,4 +8,7 @@ Used API: \
 Dogs: https://dog.ceo/dog-api/ \
 Cats: https://cataas.com/#/ 
 
-
+Main goals: 
+- API handling 
+- Render API data on page 
+- Build LightBox clone 
